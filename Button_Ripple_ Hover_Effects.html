@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple Button Hover Effects</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        :root {
+            --x: 0px;
+            --y: 0px;
+        }
+
+        body {
+            background-color: #333;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .center {
+            overflow: hidden;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn {
+            overflow: hidden;
+            box-sizing: border-box;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #222;
+            border: none;
+            padding: 30px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+
+            height: 0px;
+            width: 0px;
+            background-color: #25f;
+            background-image: linear-gradient(109.6deg, rgba(255, 174, 0, 1) 11.2%, rgba(255, 0, 0, 1) 100.2%);
+
+
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+
+            top: var(--y);
+            left: var(--x);
+        }
+
+        .btn:hover::before {
+            height: 450px;
+            width: 450px;
+            /* height: var(--z); */
+            /* width: var(--z); */
+        }
+
+        .text {
+            position: relative;
+            z-index: 1;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="center">
+        <button class="btn" id="btn" onmousemove="hovEff(event)">
+            <span class="text">
+                button
+            </span>
+        </button>
+    </div>
+
+    <script>
+
+        function hovEff(event) {
+            const btn = document.querySelector('.btn');
+            // btn.style.backgroundColor = 'red';
+
+            const x = event.offsetX;
+            const y = event.offsetY;
+            // const z = event.offsetwidth;
+            btn.style.setProperty('--x', x + 'px');
+            btn.style.setProperty('--y', y + 'px');
+            // btn.style.setProperty('--z', z + 'px');
+        }
+    </script>
+
+    <!-- <p posi> hello Souvik</p> -->
+</body>
+
+</html>
